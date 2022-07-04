@@ -110,7 +110,7 @@ export class BotClient {
 		const name = this.cache.get<string>("log_name")!
 		const version = this.cache.get<string>("log_version")!
 
-		logger.enabled = this.cache.get("log_silent")!
+		logger.enabled = !this.cache.get("log_silent")!
 		logger.store = this.cache.get("log_store")!
 
 		logger.colors.create("main", color)
@@ -140,6 +140,7 @@ export class BotClient {
 			this.logger.info(`Connected to API: ${this.client.user!.tag}`)
 			await this.__commandManager.update()
 			this.clock.start()
+			this.clock.run()
 		})
 
 		await this.client.login(this.cache.get("token")!)
