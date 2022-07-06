@@ -157,7 +157,7 @@ export abstract class BaseStorage {
 	 */
 	public async ensure<T>(id: string, fallback: T, options?: StorageOptions) {
 		if (this.has(id, options)) {
-			return await this.get<T>(id, options)
+			return (await this.get<T>(id, options))!
 		} else {
 			await this.set<T>(id, fallback, options)
 			return fallback
