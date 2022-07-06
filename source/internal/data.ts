@@ -335,7 +335,7 @@ export class FileStorage extends BaseStorage {
 	public async has(id: string, options?: StorageOptions | undefined) {
 		if (options && options.noFile) return false
 		const path = FileStorage._idPath(id, options?.extension)
-		return (await autoCatch(FS.readFile(path))).result
+		return (await autoCatch(FS.readFile(path, { encoding: "utf8" }))).result
 	}
 	public async get<T = string>(id: string, options?: StorageOptions | undefined) {
 		if (options && options.noFile) return

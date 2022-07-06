@@ -19,7 +19,8 @@ export interface AutoCatchFailure {
  */
 export async function autoCatch<T>(promise: Promise<T>): Promise<AutoCatchResult<T>> {
 	try {
-		return { result: true, content: await promise }
+		const content = await promise
+		return { result: true, content }
 	} catch (error) {
 		return { result: false, content: null, error }
 	}
