@@ -96,6 +96,7 @@ export class EmbedBuilder {
 	 */
 	public timestamp(timestamp?: number | Date | null) {
 		this.__embed.setTimestamp(timestamp)
+		return this
 	}
 	/**
 	 * Sets the embed's title
